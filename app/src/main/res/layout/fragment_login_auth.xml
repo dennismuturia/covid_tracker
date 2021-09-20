@@ -82,7 +82,8 @@
                 android:layout_margin="20dp"
                 android:background="@color/brand_color"
                 android:text="@string/login"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:layout_width="wrap_content"
