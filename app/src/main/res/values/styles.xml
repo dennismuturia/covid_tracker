@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextInputLayoutStyle" parent="">
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorError">@color/red</item>
+    </style>
+
+</resources>

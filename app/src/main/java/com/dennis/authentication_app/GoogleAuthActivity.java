@@ -24,6 +24,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.concurrent.Executor;
 
+/*
+* TO-DO: Change this activity to a fragment
+*/
 
 public class GoogleAuthActivity extends AppCompatActivity{
     private static final String TAG = "GoogleLogin";
