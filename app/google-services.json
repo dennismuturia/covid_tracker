@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "911426811737",
+    "project_id": "authentication-project-2902b",
+    "storage_bucket": "authentication-project-2902b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911426811737:android:c297dd998c0ef151cdfe48",
+        "android_client_info": {
+          "package_name": "com.dennis.authentication_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911426811737-71tbbbbgib4qpu0gg4p1gp92j9nq7kji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dennis.authentication_app",
+            "certificate_hash": "a6d68d85b85cf57d535136703273e2eb91251372"
+          }
+        },
+        {
+          "client_id": "911426811737-olfap2e111mktu6o90glqqg932lk6671.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBydx3Jya1kusaBEIjRfzZJUeh-0_Rj2jA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911426811737-olfap2e111mktu6o90glqqg932lk6671.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
