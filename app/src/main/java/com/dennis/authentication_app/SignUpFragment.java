@@ -55,15 +55,7 @@ public class SignUpFragment extends Fragment {
 
         return v;
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(currentUser != null){
-           Intent intent = new Intent(getContext(), MainActivity.class);
-           startActivity(intent);
-        }
-    }
+
 
     private void updateUI(FirebaseUser user) {
         new User(user);

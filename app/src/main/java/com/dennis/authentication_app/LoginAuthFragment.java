@@ -14,6 +14,8 @@ import android.widget.Button;
 
 import com.google.android.gms.common.SignInButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -55,5 +57,19 @@ public class LoginAuthFragment extends Fragment {
             fragmentTransaction.commit();
         });
         return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void updateUI(FirebaseUser user) {
+        new User(user);
     }
 }
