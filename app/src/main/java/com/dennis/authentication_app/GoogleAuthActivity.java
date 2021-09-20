@@ -25,7 +25,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import java.util.concurrent.Executor;
 
 
-public class AuthActivity extends AppCompatActivity{
+public class GoogleAuthActivity extends AppCompatActivity{
     private static final String TAG = "GoogleLogin";
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
