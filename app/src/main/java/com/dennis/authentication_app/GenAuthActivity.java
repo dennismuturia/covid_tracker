@@ -10,5 +10,7 @@ public class GenAuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gen_auth);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.authframe, new LoginAuthFragment()).commit();
     }
 }
