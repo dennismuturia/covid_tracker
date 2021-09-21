@@ -44,10 +44,11 @@ public class LoginAuthFragment extends Fragment {
         });
 
         loginButton.setOnClickListener(view -> {
+
             String emailText = Objects.requireNonNull(email.getText()).toString();
             String passwordText = Objects.requireNonNull(password.getText()).toString();
-
-            updateUI(new CreateUserFactory(emailText, passwordText, auth).signIn());
+            new loginClass(emailText, passwordText);
+            updateUI(new CreateUserFactory(emailText, passwordText, auth).createUser());
             IntentClass it = new IntentClass();
             it.createIntent(getContext(), MainActivity.class);
             Toast.makeText(getContext(), "SignIn successful", Toast.LENGTH_SHORT).show();
@@ -70,8 +71,17 @@ public class LoginAuthFragment extends Fragment {
 
     /*Any Transaction that calls an api to be conducted here*/
     class loginClass extends AsyncTask<Void, Void, String>{
+
+        String email;
+        String password;
+        loginClass(String email, String password){
+            this.email = email;
+            this.password = password;
+        }
+
         @Override
         protected  void onPreExecute(){
+
         }
 
         @Override

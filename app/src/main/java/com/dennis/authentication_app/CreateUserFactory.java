@@ -47,6 +47,7 @@ public class CreateUserFactory implements CreateUser{
 
     }
 
+    /*
     @Override
     public FirebaseUser signIn() {
         final FirebaseUser[] res = new FirebaseUser[1];
@@ -59,4 +60,6 @@ public class CreateUserFactory implements CreateUser{
                 });
         return res[0];
     }
+
+     */
 }
