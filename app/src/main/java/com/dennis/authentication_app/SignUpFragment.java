@@ -41,22 +41,20 @@ public class SignUpFragment extends Fragment {
 
         signInButton.setOnClickListener(view -> {
             /*TO-DO
-            * Change the edittext color if the confirm password is wrong with the password*/
+            * Change the edittext color if the confirm password is wrong with the password
+            */
             String emailText = email.getText().toString();
             String passwordText = password.getText().toString();
             String cpasswordText = cpassword.getText().toString();
 
             if(passwordText.equals(cpasswordText)){
                  updateUI(new CreateUserFactory(emailText, passwordText, mAuth).createUser());
+                 Intent intent = new Intent(getContext(), MainActivity.class);
+                 startActivity(intent);
             }else Toast.makeText(getContext(), "The Passwords do not match", Toast.LENGTH_SHORT).show();
-
-
         });
-
         return v;
     }
-
-
     private void updateUI(FirebaseUser user) {
         new User(user);
     }

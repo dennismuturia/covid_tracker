@@ -1,6 +1,7 @@
 package com.dennis.authentication_app;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.common.SignInButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -24,7 +26,7 @@ public class LoginAuthFragment extends Fragment {
     private TextInputEditText email, password;
     private Button loginButton, registerButton;
     private SignInButton signInButton;
-
+    private FirebaseAuth auth;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +47,10 @@ public class LoginAuthFragment extends Fragment {
             String emailText = Objects.requireNonNull(email.getText()).toString();
             String passwordText = Objects.requireNonNull(password.getText()).toString();
 
+            updateUI(new CreateUserFactory(emailText, passwordText, auth).signIn());
+            IntentClass it = new IntentClass();
+            it.createIntent(getContext(), MainActivity.class);
+            Toast.makeText(getContext(), "SignIn successful", Toast.LENGTH_SHORT).show();
         });
 
         registerButton.setOnClickListener(view -> {
@@ -58,18 +64,24 @@ public class LoginAuthFragment extends Fragment {
         });
         return v;
     }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getContext(), MainActivity.class);
-            startActivity(intent);
-        }
-    }
-
     private void updateUI(FirebaseUser user) {
         new User(user);
+    }
+
+    /*Any Transaction that calls an api to be conducted here*/
+    class loginClass extends AsyncTask<Void, Void, String>{
+        @Override
+        protected  void onPreExecute(){
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            //do stuff
+            return null;
+        }
+
+        protected void onPostExecute(){
+
+        }
     }
 }

@@ -5,4 +5,5 @@ import com.google.firebase.auth.FirebaseUser;
 public interface CreateUser {
     FirebaseUser createUser();
     void emailVerification();
+    FirebaseUser signIn();
 }

@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.concurrent.Executor;
 
 public class CreateUserFactory implements CreateUser{
+    private static final String TAG = "EmailPassword";
     private String email;
     private String password;
     private FirebaseAuth auth;
@@ -44,5 +45,18 @@ public class CreateUserFactory implements CreateUser{
     @Override
     public void emailVerification() {
 
+    }
+
+    @Override
+    public FirebaseUser signIn() {
+        final FirebaseUser[] res = new FirebaseUser[1];
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener((Executor) this, task -> {
+                    if(task.isSuccessful()){
+                        Log.d(TAG, "signInWithEmail:success");
+                        res[0] = auth.getCurrentUser();
+                    }
+                });
+        return res[0];
     }
 }
