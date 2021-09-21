@@ -63,6 +63,7 @@ public class LoginAuthFragment extends Fragment {
             loadingLayout.setVisibility(View.VISIBLE);
             String emailText = Objects.requireNonNull(email.getText()).toString();
             String passwordText = Objects.requireNonNull(password.getText()).toString();
+
             if(!emailText.isEmpty() && !passwordText.isEmpty())
                 signIn(emailText, passwordText);
             //updateUI(new CreateUserFactory(emailText, passwordText, auth).createUser());

@@ -66,9 +66,9 @@ public class SignUpFragment extends Fragment {
             String passwordText = password.getText().toString();
             String cpasswordText = cpassword.getText().toString();
 
-            if(passwordText.equals(cpasswordText)){
+            if(passwordText.equals(cpasswordText) && passwordText.length()!=6){
                 createAccount(emailText, passwordText);
-            }else Toast.makeText(getContext(), "The Passwords do not match", Toast.LENGTH_SHORT).show();
+            }else Toast.makeText(getContext(), "The Passwords do not match or the password length is less than 6", Toast.LENGTH_SHORT).show();
 
             FirebaseUser user = mAuth.getCurrentUser();
             if(user != null){
