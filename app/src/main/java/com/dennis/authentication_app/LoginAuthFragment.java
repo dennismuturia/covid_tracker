@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.SignInButton;
@@ -36,6 +37,7 @@ public class LoginAuthFragment extends Fragment {
     private Button loginButton, registerButton;
     private SignInButton signInButton;
     private FirebaseAuth mAuth;
+    private LinearLayout loadingLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +50,9 @@ public class LoginAuthFragment extends Fragment {
         loginButton = v.findViewById(R.id.login_button);
         signInButton = v.findViewById(R.id.google_button);
         registerButton = v.findViewById(R.id.register);
+        loadingLayout = v.findViewById(R.id.lotielayer);
+
+        loadingLayout.setVisibility(View.GONE);
 
         signInButton.setOnClickListener(view -> {
             Intent googleLogin = new Intent(getContext(), GoogleAuthActivity.class);
@@ -55,12 +60,17 @@ public class LoginAuthFragment extends Fragment {
         });
 
         loginButton.setOnClickListener(view -> {
-
+            loadingLayout.setVisibility(View.VISIBLE);
             String emailText = Objects.requireNonNull(email.getText()).toString();
             String passwordText = Objects.requireNonNull(password.getText()).toString();
-            new loginClass(emailText, passwordText).execute();
+            if(!emailText.isEmpty() && !passwordText.isEmpty())
+                signIn(emailText, passwordText);
             //updateUI(new CreateUserFactory(emailText, passwordText, auth).createUser());
-
+            FirebaseUser user = mAuth.getCurrentUser();
+            if(user!= null) {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
         });
 
         registerButton.setOnClickListener(view -> {
@@ -76,13 +86,15 @@ public class LoginAuthFragment extends Fragment {
     }
 
     private void signIn(String email, String password) {
-        // [START sign_in_with_email]
+
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener((Activity) requireContext(), (OnCompleteListener<AuthResult>) task ->{
             if (task.isSuccessful()) {
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(TAG, "signInWithEmail:success");
                 FirebaseUser user = mAuth.getCurrentUser();
                 updateUI(user);
+
+
             } else {
                 // If sign in fails, display a message to the user.
                 Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -91,7 +103,7 @@ public class LoginAuthFragment extends Fragment {
                 updateUI(null);
             }
         });
-
+        loadingLayout.setVisibility(View.GONE);
     }
 
     private void updateUI(FirebaseUser user) {
@@ -99,38 +111,5 @@ public class LoginAuthFragment extends Fragment {
     }
 
 
-    /*Any Transaction that calls an api to be conducted here*/
-    class loginClass extends AsyncTask<Void, Void, String>{
 
-        String email;
-        String password;
-        FirebaseUser user;
-        loginClass(String email, String password){
-            this.email = email;
-            this.password = password;
-        }
-
-        @Override
-        protected  void onPreExecute(){
-
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            signIn(email, password);
-            return "";
-        }
-
-        protected void onPostExecute(){
-            if(user != null){
-                IntentClass it = new IntentClass();
-                it.createIntent(getContext(), MainActivity.class);
-                Toast.makeText(getContext(), "SignIn successful", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-
-
-
-    }
 }

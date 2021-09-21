@@ -6,6 +6,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LoginAuthFragment"
     android:background="@color/gray_900">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#CCFFFFFF"
+        android:backgroundTint="@color/gray_900"
+        android:translationZ="90dp"
+        android:id="@+id/lotielayer">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lottie_url="https://assets9.lottiefiles.com/packages/lf20_pMMQPe.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/authLinearLayout"
