@@ -28,7 +28,7 @@ public class CreateUserFactory implements CreateUser{
     @Override
     public FirebaseUser createUser() {
         final FirebaseUser[] res = new FirebaseUser[1];
-        auth.signInWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Executor) this, task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "signInWithEmail:success");
@@ -47,7 +47,7 @@ public class CreateUserFactory implements CreateUser{
 
     }
 
-    /*
+
     @Override
     public FirebaseUser signIn() {
         final FirebaseUser[] res = new FirebaseUser[1];
@@ -61,5 +61,5 @@ public class CreateUserFactory implements CreateUser{
         return res[0];
     }
 
-     */
+
 }

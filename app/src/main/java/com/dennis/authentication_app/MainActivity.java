@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseAuth.getInstance().signOut();
     }
 
     @Override
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        FirebaseAuth.getInstance().signOut();
-        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+
+       // FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
     }
 
 }
