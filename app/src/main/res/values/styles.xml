@@ -4,5 +4,4 @@
         <item name="colorOnSurface">@color/white</item>
         <item name="colorError">@color/red</item>
     </style>
-
 </resources>
